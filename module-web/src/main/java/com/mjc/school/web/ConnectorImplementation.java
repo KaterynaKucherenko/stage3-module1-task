@@ -6,12 +6,13 @@ import com.mjc.school.service.DTO.ServiceModule;
 
 import java.util.List;
 
-public class ConnectorImplementation implements ConnectorFunc<NewsDTO>{
+public class ConnectorImplementation implements ConnectorFunc<NewsDTO> {
     ServiceModule serviceModule;
 
-    public ConnectorImplementation(){
+    public ConnectorImplementation() {
 
-    this.serviceModule = ServiceModule.getINSTANCE() ;}
+        this.serviceModule = ServiceModule.getINSTANCE();
+    }
 
 
     @Override
