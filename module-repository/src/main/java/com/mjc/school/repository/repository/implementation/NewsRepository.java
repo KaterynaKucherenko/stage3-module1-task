@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class NewsRepository implements RepositoryOperations<NewsModel> {
-    private DataSource dataSource;
+    private final DataSource dataSource;
     //LocalDateTime time = LocalDateTime.parse(DateTimeFormatter.ISO_INSTANT.format(Instant.now()));
     LocalDateTime time = LocalDateTime.now();
     public NewsRepository(){
@@ -16,8 +16,8 @@ public class NewsRepository implements RepositoryOperations<NewsModel> {
     @Override
     public NewsModel create(NewsModel nm) {
         if (nm != null){
-        NewsModel newNewsModel = new NewsModel(dataSource.getLastNewsId()+1, nm.getTitle(), nm.getContent(), time, time, dataSource.getLastNewsId()+1);
-            return newNewsModel;}
+        return new NewsModel(dataSource.getLastNewsId()+1, nm.getTitle(), nm.getContent(), time, time, dataSource.getLastNewsId()+1);
+            }
     else{
     return null;}
     }
@@ -29,16 +29,15 @@ public class NewsRepository implements RepositoryOperations<NewsModel> {
 
     @Override
     public NewsModel readById(Long id) {
-        return dataSource.getNewsId(id);
+        return new NewsModel(dataSource.getNewsId(id-1).getId(), dataSource.getNewsId(id-1).getTitle(),dataSource.getNewsId(id-1).getContent(), dataSource.getNewsId(id-1).getCreateDate(), dataSource.getNewsId(id-1).getLastUpdateDate(), dataSource.getNewsId(id-1).getAuthorId());
     }
 
     @Override
     public NewsModel update(NewsModel nm) {
-         NewsModel updatedNewsModel = new NewsModel(nm.getId(), nm.getTitle(), nm.getContent(), time, time, nm.getAuthorId());
-    return updatedNewsModel;}
+    return new NewsModel(nm.getId(), nm.getTitle(), nm.getContent(), time, time, nm.getAuthorId());}
 
     @Override
-    public boolean delete(long id) {
+    public Boolean delete(long id) {
         return  dataSource.getNews().remove(dataSource.getNewsId(id));
     }
 }
