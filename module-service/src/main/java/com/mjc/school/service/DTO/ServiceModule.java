@@ -2,7 +2,8 @@ package com.mjc.school.service.DTO;
 
 import com.mjc.school.service.ExceptionAndErrors.NewsNotFoundException;
 
-import com.mjc.school.repository.NewsRepository.NewsRepository;
+import com.mjc.school.repository.repository.implementation.NewsRepository;
+
 import com.mjc.school.service.Mapping.MapperNewsImpl;
 import com.mjc.school.service.Validator.Validation;
 
