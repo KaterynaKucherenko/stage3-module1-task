@@ -7,5 +7,5 @@ public interface RepositoryOperations<T>{
     List<T> readAll();
     T readById (Long id);
     T update (T t);
-    Boolean delete (long id);
+    Boolean delete (Long id);
 }

@@ -15,11 +15,9 @@ public class NewsRepository implements RepositoryOperations<NewsModel> {
     }
     @Override
     public NewsModel create(NewsModel nm) {
-        if (nm != null){
+
         return new NewsModel(dataSource.getLastNewsId()+1, nm.getTitle(), nm.getContent(), time, time, dataSource.getLastNewsId()+1);
-            }
-    else{
-    return null;}
+
     }
 
     @Override
@@ -37,7 +35,7 @@ public class NewsRepository implements RepositoryOperations<NewsModel> {
     return new NewsModel(nm.getId(), nm.getTitle(), nm.getContent(), time, time, nm.getAuthorId());}
 
     @Override
-    public Boolean delete(long id) {
+    public Boolean delete(Long id) {
         return  dataSource.getNews().remove(dataSource.getNewsId(id));
     }
 }
