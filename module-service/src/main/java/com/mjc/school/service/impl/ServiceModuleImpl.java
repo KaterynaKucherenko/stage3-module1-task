@@ -17,9 +17,10 @@ import java.util.List;
 public class ServiceModuleImpl implements Service<NewsDto> {
     private static ServiceModuleImpl INSTANCE;
     private final Repository<NewsModel> newsRepository;
-    private final Validator validation = new Validator();
+    private final Validator validation;
 
     public ServiceModuleImpl() {
+        validation = new Validator();
         newsRepository = new NewsRepository();
     }
 
