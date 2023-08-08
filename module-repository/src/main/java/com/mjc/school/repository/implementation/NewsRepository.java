@@ -1,27 +1,30 @@
-package com.mjc.school.repository.repository.implementation;
+package com.mjc.school.repository.implementation;
 
-import com.mjc.school.repository.DataSource;
-import com.mjc.school.repository.Models.NewsModel;
+import com.mjc.school.repository.datasourse.DataSource;
+import com.mjc.school.repository.model.NewsModel;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class NewsRepository implements RepositoryOperations<NewsModel> {
+public class NewsRepository implements Repository<NewsModel> {
     private final DataSource dataSource;
-    //LocalDateTime time = LocalDateTime.parse(DateTimeFormatter.ISO_INSTANT.format(Instant.now()));
+
     LocalDateTime time = LocalDateTime.now();
     public NewsRepository(){
         this.dataSource = DataSource.getInstance();
     }
     @Override
-    public NewsModel create(NewsModel nm) {
+    public NewsModel create(NewsModel newsModel) {
+        dataSource.getNews().add(new NewsModel(dataSource.getLastNewsId()+1, newsModel.getTitle(), newsModel.getContent(), time, time, newsModel.getAuthorId()));
 
-        return new NewsModel(dataSource.getLastNewsId()+1, nm.getTitle(), nm.getContent(), time, time, dataSource.getLastNewsId()+1);
+        return newsModel;
 
     }
 
+
     @Override
     public List<NewsModel> readAll() {
+
         return dataSource.getNews().stream().toList();
     }
 
@@ -31,8 +34,12 @@ public class NewsRepository implements RepositoryOperations<NewsModel> {
     }
 
     @Override
-    public NewsModel update(NewsModel nm) {
-    return new NewsModel(nm.getId(), nm.getTitle(), nm.getContent(), time, time, nm.getAuthorId());}
+    public NewsModel update(NewsModel newsModel) {
+        dataSource.getNews().set((int)(newsModel.getId()-1L),newsModel);
+        //dataSource.getNews().add(newsModel);
+    return  newsModel;
+
+    }
 
     @Override
     public Boolean delete(Long id) {

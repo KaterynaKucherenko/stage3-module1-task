@@ -1,19 +1,19 @@
-package com.mjc.school.service.DTO;
+package com.mjc.school.service.dto;
 import javax.validation.constraints.*;
-public class AuthorDTO {
-    private  long id;
+public class AuthorDto {
+    private  Long id;
     @Min(value = 3,  message = "Name should not be less than 5")
     @Max(value = 15, message = "Name should not be greater than 255")
     private String name;
 
-    public AuthorDTO(){}
+    public AuthorDto(){}
 
-    public AuthorDTO(long id, String name){
+    public AuthorDto(Long id, String name){
         this.id=id;
         this.name=name;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

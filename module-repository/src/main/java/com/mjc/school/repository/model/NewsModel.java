@@ -1,17 +1,17 @@
-package com.mjc.school.repository.Models;
+package com.mjc.school.repository.model;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class NewsModel {
-    private long id;
+    private Long id;
     private String title;
     private String content;
     private LocalDateTime createDate;
     private LocalDateTime lastUpdateDate;
-    private long authorId;
+    private Long authorId;
 
-    public NewsModel (long id, String title, String content, LocalDateTime createDate, LocalDateTime lastUpdateDate, long authorId){
+    public NewsModel (Long id, String title, String content, LocalDateTime createDate, LocalDateTime lastUpdateDate, Long authorId){
         this.id=id;
         this.title=title;
         this.content=content;
@@ -20,11 +20,11 @@ public class NewsModel {
         this.authorId=authorId;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -60,11 +60,11 @@ public class NewsModel {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public long getAuthorId() {
+    public Long getAuthorId() {
         return authorId;
     }
 
-    public void setAuthorId(long authorId) {
+    public void setAuthorId(Long authorId) {
         this.authorId = authorId;
     }
 

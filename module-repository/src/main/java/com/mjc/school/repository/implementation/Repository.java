@@ -1,8 +1,8 @@
-package com.mjc.school.repository.repository.implementation;
+package com.mjc.school.repository.implementation;
 
 import java.util.List;
 
-public interface RepositoryOperations<T>{
+public interface Repository<T>{
     T create (T t);
     List<T> readAll();
     T readById (Long id);

@@ -1,13 +1,11 @@
-package com.mjc.school.repository;
+package com.mjc.school.repository.datasourse;
 
-import com.mjc.school.repository.Models.AuthorModel;
-import com.mjc.school.repository.Models.NewsModel;
+import com.mjc.school.repository.model.AuthorModel;
+import com.mjc.school.repository.model.NewsModel;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +16,9 @@ public class DataSource {
     private List<NewsModel> news;
     private List<String> content;
     private List<String> title;
-    private long counter = 1;
+    private  Long counter =1L;
+    private  Long counterForAuthor =1L;
+
 
 
     private final String PATH_TO_CONTENT = "module-repository/src/main/resources/ content.txt";
@@ -44,19 +44,22 @@ public class DataSource {
 
 
     public  List<AuthorModel> readAuthor() {
-        List<AuthorModel> result = new ArrayList<>();
+        this.authors = new ArrayList<>();
     try (BufferedReader readAuth = new BufferedReader(new FileReader(PATH_TO_AUTHOR))) {
         String line;
         while ((line=readAuth.readLine())!=null){
             String sl = line;
-            AuthorModel authorModel = new AuthorModel(counter++, sl);
-            result.add(authorModel);
+            AuthorModel authorModel = new AuthorModel(this.counterForAuthor++, sl);
+            authors.add(authorModel);
         }}
     catch (Exception e) {
         e.printStackTrace();
     }
-return result;
+return authors;
 }
+
+
+
 
     public void readContent() {
         content=new ArrayList<>();
@@ -81,28 +84,31 @@ return result;
         }
     }
     public synchronized List<NewsModel> createNewsModel() {
-        List<NewsModel> result = new ArrayList<>();
+        this.news=new ArrayList<>();
     for(int i = 0; i<title.size(); i++){
-       // LocalDateTime time = LocalDateTime.parse(DateTimeFormatter.ISO_INSTANT.format(Instant.now()));
         LocalDateTime time = LocalDateTime.now();
-        NewsModel newsModel = new NewsModel(i+1, title.get(i), content.get(i), time, time, authors.get(i).getId());
-        result.add(newsModel);
+        Long authId = authors.get(i).getId();
+        NewsModel newsModel= new NewsModel(this.counter++, title.get(i), content.get(i), time, time, authId);;
+        news.add(newsModel);
     }
-    return result;
+    return news;
     }
 
     public List<NewsModel> getNews() {
         return news;
     }
-    public NewsModel getNewsId(long id){
-        if(id <news.size() && id>0){
-        return news.get((int)id);
+    public NewsModel getNewsId(Long id){
+        if(id <=news.size() && id>0){
+            int it = id.intValue();
+        return news.get(it);
     }
     else {
             return null;
         }}
-    public int getLastNewsId(){
-       return news.size();
+    public Long getLastNewsId(){
+       Long id= Long.valueOf(news.size());
+
+        return id;
     }
 
 }

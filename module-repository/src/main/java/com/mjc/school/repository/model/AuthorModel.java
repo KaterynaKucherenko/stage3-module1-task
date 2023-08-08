@@ -1,20 +1,20 @@
-package com.mjc.school.repository.Models;
+package com.mjc.school.repository.model;
 
 import java.util.Objects;
 
 public class AuthorModel {
-    private long id;
+    private Long id;
     private String name;
-    public AuthorModel(long id, String name){
+    public AuthorModel(Long id, String name){
         this.id=id;
         this.name=name;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

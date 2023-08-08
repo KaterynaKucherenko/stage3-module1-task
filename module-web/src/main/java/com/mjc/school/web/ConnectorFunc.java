@@ -7,5 +7,5 @@ public interface ConnectorFunc <T> {
     List<T> readAll();
     T readById (Long id);
     T update (T t);
-    boolean delete (long id);
+    boolean delete (Long id);
 }
