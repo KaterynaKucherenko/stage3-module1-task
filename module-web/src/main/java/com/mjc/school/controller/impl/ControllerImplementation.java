@@ -1,17 +1,17 @@
-package com.mjc.school.web.connectorimpl;
+package com.mjc.school.controller.impl;
 
 
 import com.mjc.school.service.Service;
 import com.mjc.school.service.dto.NewsDto;
 import com.mjc.school.service.impl.ServiceModuleImpl;
-import com.mjc.school.web.ConnectorFunc;
+import com.mjc.school.controller.ControllerFunc;
 
 import java.util.List;
 
-public class ConnectorImplementation implements ConnectorFunc<NewsDto> {
+public class ControllerImplementation implements ControllerFunc<NewsDto> {
     Service<NewsDto> serviceModule;
 
-    public ConnectorImplementation() {
+    public ControllerImplementation() {
 
         this.serviceModule = ServiceModuleImpl.getINSTANCE();
     }

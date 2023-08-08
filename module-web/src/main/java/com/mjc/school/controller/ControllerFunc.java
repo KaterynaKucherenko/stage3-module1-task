@@ -1,8 +1,8 @@
-package com.mjc.school.web;
+package com.mjc.school.controller;
 
 import java.util.List;
 
-public interface ConnectorFunc<T> {
+public interface ControllerFunc<T> {
     T create(T t);
 
     List<T> readAll();

@@ -1,12 +1,12 @@
 package com.mjc.school.repository;
 
-import com.mjc.school.web.connectorimpl.ConnectorImplementation;
+import com.mjc.school.controller.impl.ControllerImplementation;
 
 import java.util.Scanner;
 
 public class Input {
     private Scanner scanner;
-    ConnectorImplementation connectorImplementation;
+    ControllerImplementation connectorImplementation;
     FunctionsOfButtons functionsOfButtons = new FunctionsOfButtons();
 
     public Input() {
@@ -15,7 +15,7 @@ public class Input {
     }
 
     public void run() {
-        connectorImplementation = new ConnectorImplementation();
+        connectorImplementation = new ControllerImplementation();
         while (true) {
             System.out.println("Choose one of the command:" + "\n" + "1 - create news" + "\n" + "2 - read all news" + "\n" + "3 - read news by ID" + "\n" + "4 - update news" + "\n" + "5 - delete news by ID" + "\n" + "0 - to menu");
             scanner = new Scanner(System.in);
