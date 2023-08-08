@@ -4,8 +4,8 @@ import com.mjc.school.service.dto.NewsDto;
 import com.mjc.school.service.ExceptionAndErrors.ValidateException;
 
 
-public class Validator {
-    public Validator(){
+public class NewsValidator {
+    public NewsValidator(){
 
     }
     public void validate(NewsDto newsDto) throws ValidateException {

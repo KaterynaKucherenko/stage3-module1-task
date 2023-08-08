@@ -8,7 +8,7 @@ import com.mjc.school.repository.implementation.NewsRepository;
 
 import com.mjc.school.service.dto.NewsDto;
 import com.mjc.school.service.Service;
-import com.mjc.school.service.validator.Validator;
+import com.mjc.school.service.validator.NewsValidator;
 import com.mjc.school.service.mapping.MapperNewsImpl;
 
 import java.util.ArrayList;
@@ -17,10 +17,10 @@ import java.util.List;
 public class ServiceModuleImpl implements Service<NewsDto> {
     private static ServiceModuleImpl INSTANCE;
     private final Repository<NewsModel> newsRepository;
-    private final Validator validation;
+    private final NewsValidator newsValidator;
 
     public ServiceModuleImpl() {
-        validation = new Validator();
+        newsValidator = new NewsValidator();
         newsRepository = new NewsRepository();
     }
 
@@ -34,7 +34,7 @@ public class ServiceModuleImpl implements Service<NewsDto> {
 
     @Override
     public NewsDto create(NewsDto newsDto) {
-        validation.validate(newsDto);
+        newsValidator.validate(newsDto);
         return MapperNewsImpl.INSTANCE.newsToDto(newsRepository.create(MapperNewsImpl.INSTANCE.DtoToNews(newsDto)));
     }
 
@@ -54,7 +54,7 @@ public class ServiceModuleImpl implements Service<NewsDto> {
 
     @Override
     public NewsDto update(NewsDto newsDto) {
-        validation.validate(newsDto);
+        newsValidator.validate(newsDto);
         return MapperNewsImpl.INSTANCE.newsToDto(newsRepository.update(MapperNewsImpl.INSTANCE.DtoToNews(newsDto)));
     }
 
