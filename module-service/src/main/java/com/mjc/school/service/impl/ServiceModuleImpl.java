@@ -1,6 +1,6 @@
 package com.mjc.school.service.impl;
 
-import com.mjc.school.repository.implementation.Repository;
+import com.mjc.school.repository.Repository;
 import com.mjc.school.repository.model.NewsModel;
 import com.mjc.school.service.ExceptionAndErrors.NewsNotFoundException;
 
