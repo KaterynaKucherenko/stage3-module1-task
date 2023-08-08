@@ -9,11 +9,11 @@ import org.mapstruct.factory.Mappers;
 public interface MapperNewsImpl {
     MapperNewsImpl INSTANCE = Mappers.getMapper(MapperNewsImpl.class);
 
-    NewsDto newsToDto (NewsModel newsModel);
+    NewsDto newsToDto(NewsModel newsModel);
+
     @Mapping(target = "createDate", ignore = true)
 
     @Mapping(target = "lastUpdateDate", ignore = true)
-
     NewsModel DtoToNews(NewsDto newsDto);
 
 }

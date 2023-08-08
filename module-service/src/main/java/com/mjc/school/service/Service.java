@@ -3,10 +3,14 @@ package com.mjc.school.service;
 import java.util.List;
 
 public interface Service<T> {
-    T create (T t);
+    T create(T t);
+
     List<T> readAll();
-    T readById (Long id);
-    T update (T t);
-    boolean delete (Long id);
+
+    T readById(Long id);
+
+    T update(T t);
+
+    Boolean delete(Long id);
 
 }

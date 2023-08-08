@@ -38,7 +38,7 @@ public class ConnectorImplementation implements ConnectorFunc<NewsDto> {
     }
 
     @Override
-    public boolean delete(Long id) {
+    public Boolean delete(Long id) {
         return serviceModule.delete(id);
     }
 }
