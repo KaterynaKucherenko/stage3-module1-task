@@ -9,37 +9,37 @@ import com.mjc.school.controller.ControllerFunc;
 import java.util.List;
 
 public class ControllerImplementation implements ControllerFunc<NewsDto> {
-    Service<NewsDto> serviceModule;
+    Service<NewsDto> newsService;
 
     public ControllerImplementation() {
 
-        this.serviceModule = ServiceModuleImpl.getINSTANCE();
+        this.newsService = ServiceModuleImpl.getINSTANCE();
     }
 
 
     @Override
-    public NewsDto create(NewsDto newsDto) {
-        return serviceModule.create(newsDto);
+    public NewsDto create(NewsDto newsDtoInput) {
+        return newsService.create(newsDtoInput);
     }
 
     @Override
     public List<NewsDto> readAll() {
-        return serviceModule.readAll();
+        return newsService.readAll();
     }
 
     @Override
     public NewsDto readById(Long id) {
-        return serviceModule.readById(id);
+        return newsService.readById(id);
     }
 
     @Override
-    public NewsDto update(NewsDto newsDto) {
-        return serviceModule.update(newsDto);
+    public NewsDto update(NewsDto newsDtoInput) {
+        return newsService.update(newsDtoInput);
     }
 
     @Override
     public Boolean delete(Long id) {
-        return serviceModule.delete(id);
+        return newsService.delete(id);
     }
 }
 
